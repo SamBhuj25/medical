@@ -21,14 +21,14 @@ class MedicalInsurance():
         with open("model.pkl","rb") as f:
             self.model=pickle.load(f)
 
-        with open("project_data.json","r") as f:
+        with open("Project_data.json","r") as f:
             self.json_data=json.load(f)
         
 
     def get_predicted_price(self):
         self.load_model()
 
-        #print(self.json_data)
+        print(self.json_data)
 
         len(self.json_data["column"])
         region_index=self.json_data["column"].index(self.region)
@@ -65,7 +65,7 @@ if __name__ == "__main__":
 
     
     med_ins = MedicalInsurance(age,gender,bmi,children,smoker,region)
-    charges = med_ins.get_predicted_price()
-    #print("charges for medicial insurance is --- ",charges)
+    charges = med_ins.get_predicted_price()[0]
+    print("charges for medicial insurance is --- ",charges)
 
 
